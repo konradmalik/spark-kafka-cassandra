@@ -1,15 +1,16 @@
 # Producer.py
-
 from kafka import KafkaProducer
 from kafka.errors import KafkaError
+from random import *
+import time
 
-# Load the rest of the env variables
-
-producer = KafkaProducer(bootstrap_servers=['localhost:9092'])
+producer = KafkaProducer(bootstrap_servers=['127.0.0.1:9092'],
+                        key_serializer=str.encode,
+                        value_serializer=str.encode)
 
 while True:
     # Asynchronous by default
-    future = producer.send('testtopic', b'raw_bytes')
+    future = producer.send('tospark', key='key1', value='1')
 
     # Block for 'synchronous' sends
     try:
@@ -20,4 +21,7 @@ while True:
     # Successful result returns assigned partition and offset
     print (record_metadata.topic)
     print (record_metadata.partition)
-    print (record_metadata.offset) 
+    print (record_metadata.offset)
+
+    # wait
+    time.sleep(1)
