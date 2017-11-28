@@ -19,6 +19,7 @@ During testing we can use 2 docker containers (Kafka, Cassandra) and Spark Strea
 Also note, that focuses on implementation, handling serialization error, efficient producer/cassandra session handling etc. Thus, the messeges are just constant numbers for simplicity and cassandra table is poorly defined (the one and only row is constatntly overwritten).
 
 1. Kafka
+
   This will run dockerized Kafka locally (first launch):
   ```bash
   $ docker run -p 2181:2181 -p 9092:9092 \
@@ -32,6 +33,7 @@ Also note, that focuses on implementation, handling serialization error, efficie
   $ docker start kafka -a
   ```
 2. Cassandra
+
   First run:
   ```bash
   $ docker run -p 9042:9042 --name cassandra cassandra:latest
@@ -41,12 +43,14 @@ Also note, that focuses on implementation, handling serialization error, efficie
   $ docker start cassandra -a
   ```
 3. Spark Streaming:
+
   Go to *SparkKafkaCassandra* dir and:
   clean and compile using maven:
   ```bash
   $ mvn clean && mvn package
   ```
 4. Launch all (after starting docker images):
+
   Producer:
   ```bash
   $ python Kafka-producer_consumer-example/producer.py
