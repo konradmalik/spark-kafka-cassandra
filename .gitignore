@@ -1,5 +1,5 @@
 target
 dependency-reduced-pom.xml
-KafkaSparkStreaming.iml
+*.iml
 .idea
 .directory
